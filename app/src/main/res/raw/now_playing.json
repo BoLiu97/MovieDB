@@ -1,0 +1,412 @@
+{
+  "results": [
+    {
+      "popularity": 365.799,
+      "vote_count": 232,
+      "video": false,
+      "poster_path": "/lbGzEyESjANpOeD48aROlc3X7aa.jpg",
+      "id": 475557,
+      "adult": false,
+      "backdrop_path": "/pLO4qJdQxhAMPaFJu7q8bgme6R3.jpg",
+      "original_language": "en",
+      "original_title": "Joker",
+      "genre_ids": [
+        80,
+        18,
+        53
+      ],
+      "title": "Joker",
+      "vote_average": 8.5,
+      "overview": "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.",
+      "release_date": "2019-10-04"
+    },
+    {
+      "popularity": 197.005,
+      "vote_count": 316,
+      "video": false,
+      "poster_path": "/kTQ3J8oTTKofAVLYnds2cHUz9KO.jpg",
+      "id": 522938,
+      "adult": false,
+      "backdrop_path": "/spYx9XQFODuqEVoPpvaJI1ksAVt.jpg",
+      "original_language": "en",
+      "original_title": "Rambo: Last Blood",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "title": "Rambo: Last Blood",
+      "vote_average": 6.2,
+      "overview": "When John Rambo's niece travels to Mexico to find the father that abandoned her and her mother, she finds herself in the grasps of Calle Mexican sex traffickers. When she doesn't return home as expected, John learns she's crossed into Mexico and sets out to get her back and make them pay.",
+      "release_date": "2019-09-20"
+    },
+    {
+      "popularity": 171.869,
+      "vote_count": 1217,
+      "video": false,
+      "poster_path": "/zfE0R94v1E8cuKAerbskfD3VfUt.jpg",
+      "id": 474350,
+      "adult": false,
+      "backdrop_path": "/8moTOzunF7p40oR5XhlDvJckOSW.jpg",
+      "original_language": "en",
+      "original_title": "It Chapter Two",
+      "genre_ids": [
+        27
+      ],
+      "title": "It Chapter Two",
+      "vote_average": 7.1,
+      "overview": "27 years after overcoming the malevolent supernatural entity Pennywise, the former members of the Losers' Club, who have grown up and moved away from Derry, are brought back together by a devastating phone call.",
+      "release_date": "2019-09-06"
+    },
+    {
+      "popularity": 108.971,
+      "vote_count": 223,
+      "video": false,
+      "poster_path": "/zBhv8rsLOfpFW2M5b6wW78Uoojs.jpg",
+      "id": 540901,
+      "adult": false,
+      "backdrop_path": "/5GynP6w2OQWSbKnCLHrBIriF4Cw.jpg",
+      "original_language": "en",
+      "original_title": "Hustlers",
+      "genre_ids": [
+        35,
+        80,
+        18
+      ],
+      "title": "Hustlers",
+      "vote_average": 6.2,
+      "overview": "A crew of savvy former strip club employees band together to turn the tables on their Wall Street clients.",
+      "release_date": "2019-09-13"
+    },
+    {
+      "popularity": 139.48,
+      "vote_count": 1351,
+      "video": false,
+      "poster_path": "/keym7MPn1icW1wWfzMnW3HeuzWU.jpg",
+      "id": 384018,
+      "adult": false,
+      "backdrop_path": "/hpgda6P9GutvdkDX5MUJ92QG9aj.jpg",
+      "original_language": "en",
+      "original_title": "Fast & Furious Presents: Hobbs & Shaw",
+      "genre_ids": [
+        28
+      ],
+      "title": "Fast & Furious Presents: Hobbs & Shaw",
+      "vote_average": 6.5,
+      "overview": "A spinoff of The Fate of the Furious, focusing on Johnson's US Diplomatic Security Agent Luke Hobbs forming an unlikely alliance with Statham's Deckard Shaw.",
+      "release_date": "2019-08-02"
+    },
+    {
+      "popularity": 148.568,
+      "vote_count": 2405,
+      "video": false,
+      "poster_path": "/w9kR8qbmQ01HwnvK4alvnQ2ca0L.jpg",
+      "id": 301528,
+      "adult": false,
+      "backdrop_path": "/m67smI1IIMmYzCl9axvKNULVKLr.jpg",
+      "original_language": "en",
+      "original_title": "Toy Story 4",
+      "genre_ids": [
+        12,
+        16,
+        35,
+        10751
+      ],
+      "title": "Toy Story 4",
+      "vote_average": 7.6,
+      "overview": "Woody has always been confident about his place in the world and that his priority is taking care of his kid, whether that's Andy or Bonnie. But when Bonnie adds a reluctant new toy called \"Forky\" to her room, a road trip adventure alongside old and new friends will show Woody how big the world can be for a toy.",
+      "release_date": "2019-06-21"
+    },
+    {
+      "popularity": 131.59,
+      "vote_count": 2730,
+      "video": false,
+      "poster_path": "/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
+      "id": 458156,
+      "adult": false,
+      "backdrop_path": "/vVpEOvdxVBP2aV166j5Xlvb5Cdc.jpg",
+      "original_language": "en",
+      "original_title": "John Wick: Chapter 3 - Parabellum",
+      "genre_ids": [
+        28,
+        80,
+        53
+      ],
+      "title": "John Wick: Chapter 3 - Parabellum",
+      "vote_average": 7.1,
+      "overview": "Super-assassin John Wick returns with a $14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin’s guild, the High Table, John Wick is excommunicado, but the world’s most ruthless hit men and women await his every turn.",
+      "release_date": "2019-05-17"
+    },
+    {
+      "popularity": 84.525,
+      "vote_count": 109,
+      "video": false,
+      "poster_path": "/5DSVYlKwEzGBxTkS95L73c3oxLs.jpg",
+      "id": 530382,
+      "adult": false,
+      "backdrop_path": "/eZKJ6Ez3DhVamz1CG1zwUpdwaAS.jpg",
+      "original_language": "en",
+      "original_title": "In the Shadow of the Moon",
+      "genre_ids": [
+        9648,
+        878,
+        53
+      ],
+      "title": "In the Shadow of the Moon",
+      "vote_average": 6.1,
+      "overview": "In 1988, Philadelphia police officer Thomas \"Locke\" Lockhart, hungry to become a detective, begins tracking a serial killer whose crimes defy scientific explanation. When the killer mysteriously resurfaces nine years later, Locke's obsession with finding the truth threatens to destroy his career, his family, and possibly his sanity.",
+      "release_date": "2019-09-27"
+    },
+    {
+      "popularity": 78.935,
+      "vote_count": 2012,
+      "video": false,
+      "poster_path": "/8j58iEBw9pOXFD2L0nt0ZXeHviB.jpg",
+      "id": 466272,
+      "adult": false,
+      "backdrop_path": "/kKTPv9LKKs5L3oO1y5FNObxAPWI.jpg",
+      "original_language": "en",
+      "original_title": "Once Upon a Time in Hollywood",
+      "genre_ids": [
+        28,
+        35,
+        80,
+        18
+      ],
+      "title": "Once Upon a Time in Hollywood",
+      "vote_average": 7.6,
+      "overview": "A faded television actor and his stunt double strive to achieve fame and success in the film industry during the final years of Hollywood's Golden Age in 1969 Los Angeles.",
+      "release_date": "2019-07-26"
+    },
+    {
+      "popularity": 98.765,
+      "vote_count": 570,
+      "video": false,
+      "poster_path": "/fpe0eG2TBLJLQiqlhhvaWIfixXz.jpg",
+      "id": 419704,
+      "adult": false,
+      "backdrop_path": "/p3TCqUDoVsrIm8fHK9KOTfWnDjZ.jpg",
+      "original_language": "en",
+      "original_title": "Ad Astra",
+      "genre_ids": [
+        12,
+        18,
+        878
+      ],
+      "title": "Ad Astra",
+      "vote_average": 6.3,
+      "overview": "An astronaut travels to the outer edges of the solar system to find his father and unravel a mystery that threatens the survival of our planet. He uncovers secrets which challenge the nature of human existence and our place in the cosmos.",
+      "release_date": "2019-09-20"
+    },
+    {
+      "popularity": 102.293,
+      "vote_count": 6,
+      "video": false,
+      "poster_path": "/vS6TCG4HiUSCyX30f5wDGQDt1k3.jpg",
+      "id": 428045,
+      "adult": false,
+      "backdrop_path": "/6z2RYYKl2AAfVkOse7Uxh8TXHJa.jpg",
+      "original_language": "ru",
+      "original_title": "Тайна Печати дракона",
+      "genre_ids": [
+        12,
+        14
+      ],
+      "title": "The Mystery of the Dragon’s Seal",
+      "vote_average": 5.3,
+      "overview": "The Russian Czar Peter the Great commissions Jonathan Green, an English traveller, to map the Far East territories of the Russian Empire. Green sets off on yet another long journey, full of unbelievable adventures, which eventually leads him to China. On his way, the famous cartographer makes breath-taking discoveries, meets mysterious creatures, Chinese princesses, deadly masters of oriental martial arts, and even Lun Van, the King of Dragons, himself. What could be more perilous than looking into the eyes of Viy? Only meeting him again… What will prevail this time — the unflinching scepticism of the scientist or ancient black magic, which has already gained influence over the Far East Lands?",
+      "release_date": "2019-08-16"
+    },
+    {
+      "popularity": 82.057,
+      "vote_count": 29,
+      "video": false,
+      "poster_path": "/uTALxjQU8e1lhmNjP9nnJ3t2pRU.jpg",
+      "id": 453405,
+      "adult": false,
+      "backdrop_path": "/c3F4P2oauA7IQmy4hM0OmRt2W7d.jpg",
+      "original_language": "en",
+      "original_title": "Gemini Man",
+      "genre_ids": [
+        28,
+        878,
+        53
+      ],
+      "title": "Gemini Man",
+      "vote_average": 5.9,
+      "overview": "Henry Brogen, an aging assassin tries to get out of the business but finds himself in the ultimate battle: fighting his own clone who is 25 years younger than him and at the peak of his abilities.",
+      "release_date": "2019-10-11"
+    },
+    {
+      "popularity": 62.36,
+      "vote_count": 47,
+      "video": false,
+      "poster_path": "/iK0Q7VWxHsXU1uMzpkf3VjAd6yE.jpg",
+      "id": 431580,
+      "adult": false,
+      "backdrop_path": "/tLCDKsXo6D84IVFanoElosSEKdp.jpg",
+      "original_language": "en",
+      "original_title": "Abominable",
+      "genre_ids": [
+        12,
+        16,
+        35,
+        10751
+      ],
+      "title": "Abominable",
+      "vote_average": 6.9,
+      "overview": "Trekking the 3000-mile journey from Shanghai to the Himalayan snowscapes, a group of misfits encounter a young Yeti named Everest, and they set off to reunite the magical creature with his family on the mountain of his namesake.",
+      "release_date": "2019-09-27"
+    },
+    {
+      "popularity": 59.069,
+      "vote_count": 495,
+      "video": false,
+      "poster_path": "/9kOtMOUa5HrOiIG2Z9Anv7M8AbY.jpg",
+      "id": 511987,
+      "adult": false,
+      "backdrop_path": "/lm4xH0YwFbVvTgdtau1thNK5S6J.jpg",
+      "original_language": "en",
+      "original_title": "Crawl",
+      "genre_ids": [
+        28,
+        18,
+        27,
+        53
+      ],
+      "title": "Crawl",
+      "vote_average": 6.1,
+      "overview": "While struggling to save her father during a Category 5 hurricane, a young woman finds herself trapped inside a flooding house and fighting for her life against Florida’s most savage and feared predators.",
+      "release_date": "2019-07-12"
+    },
+    {
+      "popularity": 69.995,
+      "vote_count": 636,
+      "video": false,
+      "poster_path": "/rXsh4MI6uyVgZBSSzXCfitJnVPy.jpg",
+      "id": 530385,
+      "adult": false,
+      "backdrop_path": "/g6GtOfXtzDpY73ef7wludoorTti.jpg",
+      "original_language": "en",
+      "original_title": "Midsommar",
+      "genre_ids": [
+        18,
+        27,
+        9648,
+        53
+      ],
+      "title": "Midsommar",
+      "vote_average": 7.2,
+      "overview": "A young couple travels to Sweden to visit their friend’s rural hometown and attend its mid-summer festival. What begins as an idyllic retreat quickly descends into an increasingly violent and bizarre competition at the hands of a pagan cult.",
+      "release_date": "2019-07-03"
+    },
+    {
+      "popularity": 49.501,
+      "vote_count": 667,
+      "video": false,
+      "poster_path": "/1rjaRIAqFPQNnMtqSMLtg0VEABi.jpg",
+      "id": 515195,
+      "adult": false,
+      "backdrop_path": "/l0wzOjzhzf3qjQqgLHiGZcEpGO9.jpg",
+      "original_language": "en",
+      "original_title": "Yesterday",
+      "genre_ids": [
+        35,
+        14,
+        10402,
+        10749
+      ],
+      "title": "Yesterday",
+      "vote_average": 6.7,
+      "overview": "Jack Malik is a struggling singer-songwriter in an English seaside town whose dreams of fame are rapidly fading, despite the fierce devotion and support of his childhood best friend, Ellie. After a freak bus accident during a mysterious global blackout, Jack wakes up to discover that he's the only person on Earth who can remember The Beatles.",
+      "release_date": "2019-06-28"
+    },
+    {
+      "popularity": 57.88,
+      "vote_count": 30,
+      "video": false,
+      "poster_path": "/y0veZvK4Q0NzoAjbFlUrGr1cvZ8.jpg",
+      "id": 520901,
+      "adult": false,
+      "backdrop_path": "/kNGW6f47HUk0hISjj1AvXoLNL3L.jpg",
+      "original_language": "en",
+      "original_title": "Doom: Annihilation",
+      "genre_ids": [
+        28,
+        27,
+        9648,
+        878
+      ],
+      "title": "Doom: Annihilation",
+      "vote_average": 4.2,
+      "overview": "Doom: Annihilation follows a group of space marines as they respond to a distress call from a base on a Martian moon, only to discover it’s been overrun by demonic creatures who threaten to create Hell on Earth.",
+      "release_date": "2019-09-30"
+    },
+    {
+      "popularity": 58.934,
+      "vote_count": 432,
+      "video": false,
+      "poster_path": "/d8u4jpkDKgEPDJUl4g3vOOP3mDe.jpg",
+      "id": 484641,
+      "adult": false,
+      "backdrop_path": "/pIL9e5cN6RNugDCCLwn3stfb9HE.jpg",
+      "original_language": "fr",
+      "original_title": "Anna",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "title": "Anna",
+      "vote_average": 6.4,
+      "overview": "Beneath Anna Poliatova's striking beauty lies a secret that will unleash her indelible strength and skill to become one of the world's most feared government assassins.",
+      "release_date": "2019-06-21"
+    },
+    {
+      "popularity": 50.58,
+      "vote_count": 1232,
+      "video": false,
+      "poster_path": "/bk8LyaMqUtaQ9hUShuvFznQYQKR.jpg",
+      "id": 456740,
+      "adult": false,
+      "backdrop_path": "/5BkSkNtfrnTuKOtTaZhl8avn4wU.jpg",
+      "original_language": "en",
+      "original_title": "Hellboy",
+      "genre_ids": [
+        28,
+        12,
+        14,
+        878
+      ],
+      "title": "Hellboy",
+      "vote_average": 5.1,
+      "overview": "Hellboy comes to England, where he must defeat Nimue, Merlin's consort and the Blood Queen. But their battle will bring about the end of the world, a fate he desperately tries to turn away.",
+      "release_date": "2019-04-12"
+    },
+    {
+      "popularity": 49.54,
+      "vote_count": 22,
+      "video": false,
+      "poster_path": "/4E2lyUGLEr3yH4q6kJxPkQUhX7n.jpg",
+      "id": 568012,
+      "adult": false,
+      "backdrop_path": "/iGnCzXEx0cFlUbpyAMeHwHWhPhx.jpg",
+      "original_language": "ja",
+      "original_title": "ワンピーススタンピード",
+      "genre_ids": [
+        28,
+        12,
+        16
+      ],
+      "title": "One Piece: Stampede",
+      "vote_average": 8.5,
+      "overview": "One Piece: Stampede is a stand-alone film that celebrates the anime's 20th Anniversary and takes place outside the canon of the \"One Piece\" TV series. Monkey D. Luffy and his Straw Hat pirate crew are invited to a massive Pirate Festival that brings many of the most iconic characters from throughout the franchise to participate in competition with the Straw Hats to find Roger's treasure. It also pits the Straw Hats against a new enemy named Bullet, a former member of Roger's crew.",
+      "release_date": "2019-10-24"
+    }
+  ],
+  "page": 1,
+  "total_results": 1279,
+  "dates": {
+    "maximum": "2019-10-09",
+    "minimum": "2019-08-22"
+  },
+  "total_pages": 64
+}

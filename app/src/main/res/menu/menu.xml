@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
+    <item
+        android:id="@+id/action_playing"
+        android:title="Now playing"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_coming"
+        android:title="Up-coming"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_saved"
+        android:title="Saved List"
+        app:showAsAction="never"
+        />
+
+</menu>
