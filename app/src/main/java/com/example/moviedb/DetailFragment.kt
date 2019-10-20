@@ -64,7 +64,7 @@ class DetailFragment : Fragment() {
         bt_edit.isVisible = false
         movieViewModel.singleMovie.observe(this, Observer {
             TV_name.setText(it.title)
-            TV_data.setText("Lacun Date: " + it.release_date)
+            TV_data.setText("Launch Date: " + it.release_date)
             TV_rate.setText("Public Rating: " + it.vote_average.toString())
             TV_type.setText("Genres: " + it.genre_st)
             TV_des.setText(it.overview)

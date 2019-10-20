@@ -38,6 +38,7 @@ class FavorFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_favor, container, false)
     }
+
     lateinit var listener: OnFragmentInteractionListener
 
     interface OnFragmentInteractionListener {
