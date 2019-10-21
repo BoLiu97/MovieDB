@@ -30,7 +30,7 @@ class MovieViewModel :ViewModel(){
     }
 
     fun updateProfile(rating:Double,review:String){
-        savedMovies
+        savedMovies.value!!
     }
     fun addMovie(movie: Movie){
         savedMovies.value?.add(movie)
