@@ -81,8 +81,8 @@ class DetailFragment : Fragment() {
                 movieViewModel.savedMovies.observe(this, Observer {
                     idmm = it.get(i).id
                     if (idMovie == idmm) {
-                        TV_personal.setText(movieViewModel.savedMovies.value!!.get(i)?.comments)
-                        rating.setRating(movieViewModel.savedMovies.value!!.get(i)?.star)
+                        TV_personal.setText(it.get(i)?.comments)
+                        rating.setRating(it.get(i)?.star)
                         TV_personal.isVisible = true
                         rating.isVisible = true
                         bt_edit.isVisible = true
