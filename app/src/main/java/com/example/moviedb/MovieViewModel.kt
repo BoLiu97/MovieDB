@@ -22,10 +22,10 @@ class MovieViewModel :ViewModel(){
         upcomingMovie.value=ArrayList()
         genre.value=ArrayList()
     }
-    fun checkSaved(movie: Movie){
-
-        val opt = savedMovies.value!!.filter({it==movie })
-        opt
+    fun checkSaved():Boolean?{
+         return  savedMovies.value?.any {
+                it.id==singleMovie.value?.id
+            }
 
     }
 

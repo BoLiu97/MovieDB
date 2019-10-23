@@ -77,6 +77,7 @@ class FavorFragment : Fragment() {
         viewAdapter = RecyclerViewAdapter(viewModel.savedMovies.value!!){
                 movie:Movie ->recyclerViewItemSelected(movie)
         }
+        println("size of savedMovie" + viewModel.savedMovies.value!!.size)
         fave_recycler.apply {
             layoutManager = viewManager
             adapter = viewAdapter
@@ -133,7 +134,7 @@ class FavorFragment : Fragment() {
             fun bind(movie: Movie, clickListener: (Movie) -> Unit) {
                 viewItem.run {
                     findViewById<TextView>(R.id.MVName).text = movie.title
-                    findViewById<RatingBar>(R.id.RB_fav).setRating(movie.star.toFloat())
+                    findViewById<RatingBar>(R.id.RB_fav).setRating(movie.star)
                     findViewById<RatingBar>(R.id.RB_fav).setIsIndicator(true)
                     PosterLoader.getInstance().loadURL(movie.poster_path,  findViewById<ImageView>(R.id.IV_style))
 

@@ -2,6 +2,7 @@ package com.example.moviedb
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,7 @@ class DetailFragment : Fragment() {
         // Inflate the layout for this fragment
         movieViewModel = activity?.run {
             ViewModelProviders.of(this).get(MovieViewModel::class.java)
-        }?: throw Exception ("Activity Invalid")
+        } ?: throw Exception("Activity Invalid")
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
@@ -49,18 +50,17 @@ class DetailFragment : Fragment() {
 //        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
 //            // Handle the back button event
 //        }
-        bt_edit.setOnClickListener{
-            findNavController().navigate(R.id.action_detailFragment_to_reviewFragment)
+        bt_edit.setOnClickListener {
+            findNavController().navigate(R.id.action_global_reviewFragment)
         }
-        bt_like.setOnClickListener{
-            findNavController().navigate(R.id.action_detailFragment_to_reviewFragment)
+        bt_like.setOnClickListener {
+            findNavController().navigate(R.id.action_global_reviewFragment)
         }
         rating.setIsIndicator(true)
         var idMovie = 0
-        var svComm = ""
-        var svRate = 0.0
-        TV_personal.isVisible =false
-        rating.isVisible=false
+
+        TV_personal.isVisible = false
+        rating.isVisible = false
         bt_edit.isVisible = false
         movieViewModel.singleMovie.observe(this, Observer {
             TV_name.setText(it.title)
@@ -71,26 +71,54 @@ class DetailFragment : Fragment() {
             idMovie = it.id
             PosterLoader.getInstance().loadURL(it.backdrop_path, FV_movie)
         })
-        idMovie =movieViewModel.singleMovie.value!!.id
-        var idmm =0
-        for (i in 0 until movieViewModel.savedMovies.value!!.size) {
-            movieViewModel.savedMovies.observe(this, Observer {
-                idmm = it.get(i).id
-                if(idMovie == idmm){
-                    TV_personal.setText(it.get(i).comments)
-                    rating.setRating(it.get(i).star.toFloat())
-                    TV_personal.isVisible =true
-                    rating.isVisible=true
-                    bt_edit.isVisible = true
-                }
+        idMovie = movieViewModel.singleMovie.value!!.id
+        var idmm = 0
+        println(movieViewModel.savedMovies.value?.joinToString(",") { it.title })
 
-            })
+        if (movieViewModel.checkSaved()!!) {
+            var loc = 0
+            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
+                movieViewModel.savedMovies.observe(this, Observer {
+                    idmm = it.get(i).id
+                    if (idMovie == idmm) {
+                        TV_personal.setText(movieViewModel.savedMovies.value!!.get(i)?.comments)
+                        rating.setRating(movieViewModel.savedMovies.value!!.get(i)?.star)
+                        TV_personal.isVisible = true
+                        rating.isVisible = true
+                        bt_edit.isVisible = true
+                    }
+                })
+
+            }
+
+            //print(movieViewModel.savedMovies.value?.get(idMovie).star)
+
+            //print("star is " + )
+
+
+        }
+//        for (i in 0 until movieViewModel.savedMovies.value!!.size) {
+//            movieViewModel.savedMovies.observe(this, Observer {
+//                idmm = it.get(i).id
+//                if(idMovie == idmm){
+//                    TV_personal.setText(it.get(i).comments)
+//                    rating.setRating(it.get(i).star.toFloat())
+//                    print(it.get(i).star)
+//                    //print("star is " + )
+//                    TV_personal.isVisible =true
+//                    rating.isVisible=true
+//                    bt_edit.isVisible = true
+//                }
+//
+//            })
+//
 //            if(idMovie == idmm){
 //                TV_personal.setText(svComm)
 //                rating.setRating(svRate.toFloat())
 //            }
-        }
+//        }
+
+
     }
-
-
 }
+

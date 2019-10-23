@@ -8,12 +8,22 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="action_global_detailFragment">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
                   <entry key="action_global_favorFragment">
                     <value>
                       <LayoutPositions />
                     </value>
                   </entry>
                   <entry key="action_global_listFragment">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
+                  <entry key="action_global_reviewFragment">
                     <value>
                       <LayoutPositions />
                     </value>

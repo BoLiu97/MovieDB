@@ -46,7 +46,7 @@ class ReviewFragment : Fragment() {
         var overview = ""
         var release_date = ""
         var loved = true
-        var star = 0.0
+        var star = 0.0f
         ///////array list update???
 
         var comments = ""
@@ -54,6 +54,7 @@ class ReviewFragment : Fragment() {
         var idmm = 0
         var bReview = ""
         var bStar = 0.0
+        var loc = 0
         movieViewModel.singleMovie.observe(this, Observer {
             orginId = it.id
             backPath = it.backdrop_path
@@ -67,67 +68,96 @@ class ReviewFragment : Fragment() {
             star = it.star
             PosterLoader.getInstance().loadURL(it.backdrop_path, IV_post)
         })
-        movieViewModel.singleMovie.observe(this, Observer {
+
+//        movieViewModel.singleMovie.observe(this, Observer {
+//            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
+//                movieViewModel.savedMovies.observe(this, Observer {
+//                    idmm = it.get(i).id
+//                    if (orginId == idmm) {
+//                        ET_review.setText(it.get(i).comments)
+//                        ratingBar.setRating(it.get(i).star.toFloat())
+//                    }
+//                })
+//            }
+//        })
+        if(movieViewModel.checkSaved()!!){
             for (i in 0 until movieViewModel.savedMovies.value!!.size) {
                 movieViewModel.savedMovies.observe(this, Observer {
                     idmm = it.get(i).id
+
                     if (orginId == idmm) {
                         ET_review.setText(it.get(i).comments)
-                        ratingBar.setRating(it.get(i).star.toFloat())
+                        ratingBar.setRating(movieViewModel.savedMovies.value!!.get(i)?.star)
+                        loc = i
                     }
                 })
+
             }
-        })
+
+            //println(movieViewModel.savedMovies.value?.joinToString(",") {it.title  })
+
+        }
+
         bt_save.setOnClickListener {
-            movieViewModel.singleMovie.value!!.star = ratingBar.rating.toDouble()
+            movieViewModel.singleMovie.value!!.star = ratingBar.rating
             movieViewModel.singleMovie.value!!.comments = ET_review.text.toString()
             movieViewModel.singleMovie.value!!.loved = true
 
 
-            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
-                movieViewModel.savedMovies.observe(this, Observer {
-                    idmm = it.get(i).id
-
-                })
-                if (orginId == idmm) {
-                    movieViewModel.savedMovies.value!!.get(i).comments = ET_review.text.toString()
-                    movieViewModel.savedMovies.value!!.get(i).star = ratingBar.rating.toDouble()
-                    findNavController().navigate(R.id.action_reviewFragment_to_detailFragment)
-                    return@setOnClickListener
-                }
+//            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
+//                movieViewModel.savedMovies.observe(this, Observer {
+//                    idmm = it.get(i).id
+//
+//                })
+//                if (orginId == idmm) {
+//                    movieViewModel.savedMovies.value!!.get(i).comments = ET_review.text.toString()
+//                    movieViewModel.savedMovies.value!!.get(i).star = ratingBar.rating
+//                    findNavController().navigate(R.id.action_global_detailFragment)
+//                    return@setOnClickListener
+//                }
+//            }
+            if(movieViewModel.checkSaved()!!){
+                movieViewModel.savedMovies.value!!.get(loc)?.comments =  ET_review.text.toString()
+                movieViewModel.savedMovies.value!!.get(loc)?.star = ratingBar.rating
+                findNavController().navigate(R.id.action_global_detailFragment)
+                println(movieViewModel.savedMovies.value?.joinToString(",") {it.title  })
+            }else {
+                movieViewModel.addMovie(movieViewModel.singleMovie.value!!)
+                findNavController().navigate(R.id.action_global_detailFragment)
             }
-            movieViewModel.addMovie(movieViewModel.singleMovie.value!!)
-            findNavController().navigate(R.id.action_reviewFragment_to_detailFragment)
         }
         bt_cancel.setOnClickListener {
             //            var movie11 = Movie(poster_path,backPath,genre_ids,
 //                title,vote_average,overview,release_date,loved,bStar,bReview,genre_st,id)
 //            movieViewModel.savedMovies.value!!.set(orginId,movie11)
-            var nohad = false
-            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
-                movieViewModel.savedMovies.observe(this, Observer {
-                    idmm = it.get(i).id
-
-                })
-                if (orginId == idmm) {
-                    nohad = true
-                }
-            }
-            if (nohad) {
+//            var nohad = false
+//            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
+//                movieViewModel.savedMovies.observe(this, Observer {
+//                    idmm = it.get(i).id
+//
+//                })
+//                if (orginId == idmm) {
+//                    nohad = true
+//                }
+//            }
+//            if (nohad) {
+//                movieViewModel.addMovie(movieViewModel.singleMovie.value!!)
+//            }
+            if(!movieViewModel.checkSaved()!!){
+                //here is the problem
                 movieViewModel.addMovie(movieViewModel.singleMovie.value!!)
+            }else{
+                ET_review.setText(movieViewModel.savedMovies.value!!.get(loc)?.comments)
+                ratingBar.setRating(movieViewModel.savedMovies.value!!.get(loc)?.star)
+                //save the orgin values if click cancel
             }
-            findNavController().navigate(R.id.action_reviewFragment_to_detailFragment)
+            findNavController().navigate(R.id.action_global_detailFragment)
         }
-
-
-
-
-
 
     }
     override fun onPause() {
         super.onPause()
-        movieViewModel.singleMovie.value!!.star = ratingBar.rating.toDouble()
+        movieViewModel.singleMovie.value!!.star = ratingBar.rating
         movieViewModel.singleMovie.value!!.comments = ET_review.text.toString()
     }
 }

@@ -69,7 +69,7 @@ class ListFragment : Fragment() {
                     val overview = userDetail.getString("overview")
                     val release_date = userDetail.getString("release_date")
                     val loved = false
-                    var star = 0.0
+                    var star = 0.0f
                     var comments= ""
                     var id = userDetail.getInt("id")
                     val genres = userDetail.getString("genre_ids")
@@ -107,7 +107,7 @@ class ListFragment : Fragment() {
                     val overview = userDetail.getString("overview")
                     val release_date = userDetail.getString("release_date")
                     val loved = false
-                    var star = 0.0
+                    var star = 0.0f
                     var comments= ""
                     var id = userDetail.getInt("id")
                     val genres = userDetail.getString("genre_ids")

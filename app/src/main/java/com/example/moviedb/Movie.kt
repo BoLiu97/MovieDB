@@ -11,7 +11,7 @@ class Movie(
     var overview:String,
     var release_date:String,
     var loved:Boolean,
-    var star:Double,
+    var star:Float,
     var comments:String,
     var genre_st:String,
     var id:Int
