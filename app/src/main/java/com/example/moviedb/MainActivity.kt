@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    lateinit var viewModel: MovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +27,6 @@ class MainActivity : AppCompatActivity() {
         movieMenu = menu
         return true
     }
-//    lateinit var movieViewModel:MovieViewModel
-//    override fun updateMovie() {
-//        movieViewModel.savedMovies.observe(this, Observer {
-//            movieMenu?.findItem(R.id.coffee_cart)?.setTitle("Cart(${it.size})")
-//        })
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         var navController = findNavController(R.id.nav_host_fragment)

@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.android.synthetic.main.fragment_review.*
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -44,95 +46,76 @@ class ListFragment : Fragment() {
         // set a LinearLayoutManager with default vertical orientation
         val jsonString = resources.openRawResource(R.raw.genre).bufferedReader().use { it.readText() }
         val genre=GenreDecoder(jsonString).codes
+
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
         var name = arguments?.getString("MovieList")
+            try {
 
-        try {
+                if (name == "upComing") {
 
-            if(name == "upComing"){
-                var cay = ArrayList<Movie>()
-                 val jsonString = resources.openRawResource(R.raw.upcoming).bufferedReader().use { it.readText() }
-                TVType.setText("Upcoming")
-                val obj = JSONObject(jsonString)
-                // fetch JSONArray named users by using getJSONArray
-                val userArray = obj.getJSONArray("results")
-                // implement for loop for getting users data i.e. name, email and contact
-                for (i in 0 until userArray.length()) {
-                    // create a JSONObject for fetching single user data
-                    val userDetail = userArray.getJSONObject(i)
-                    val poster_path = userDetail.getString("poster_path")
-                    val backdrop_path = userDetail.getString("backdrop_path")
-                    // fetch email and name and store it in arraylist
-                    val title = userDetail.getString("title")
-                    val vote_average = userDetail.getDouble("vote_average")
-                    val overview = userDetail.getString("overview")
-                    val release_date = userDetail.getString("release_date")
-                    val loved = false
-                    var star = 0.0f
-                    var comments= ""
-                    var id = userDetail.getInt("id")
-                    val genres = userDetail.getString("genre_ids")
-                    val genres1 = genres.split(",")
-                    var genreString = ""
-                    for (i in 0 until genres1.size) {
-                        val genrenum = genres1[i].
-                            replace("[","")
-                            .replace("]","")
-                            .toInt()
-                        genreString += genre.get(genrenum)+" "
+                    if (viewModel.upcomingMovie.value?.size!! < 1) {
+                        viewModel.fetchUpcome()
                     }
-                    val genre_str = genreString
-                    cay.add(Movie(poster_path,backdrop_path,genres,title,
-                        vote_average,overview,release_date,loved,star,comments,genre_str,id  ))
-                }
-                viewModel.upcomingMovie.value =cay
+                    TVType.setText("Upcoming")
 
-            }else{
-                 val jsonString = resources.openRawResource(R.raw.now_playing).bufferedReader().use { it.readText() }
-                TVType.setText("Now Playing")
-                var clay = ArrayList<Movie>()
-                val obj = JSONObject(jsonString)
-                // fetch JSONArray named users by using getJSONArray
-                val userArray = obj.getJSONArray("results")
-                // implement for loop for getting users data i.e. name, email and contact
-                for (i in 0 until userArray.length()) {
-                    // create a JSONObject for fetching single user data
-                    val userDetail = userArray.getJSONObject(i)
-                    val poster_path = userDetail.getString("poster_path")
-                    val backdrop_path = userDetail.getString("backdrop_path")
-                    // fetch email and name and store it in arraylist
-                    val title = userDetail.getString("title")
-                    val vote_average = userDetail.getDouble("vote_average")
-                    val overview = userDetail.getString("overview")
-                    val release_date = userDetail.getString("release_date")
-                    val loved = false
-                    var star = 0.0f
-                    var comments= ""
-                    var id = userDetail.getInt("id")
-                    val genres = userDetail.getString("genre_ids")
-                    val genres1 = genres.split(",")
-                    var genreString = ""
-                    for (i in 0 until genres1.size) {
-                        val genrenum = genres1[i].
-                            replace("[","")
-                            .replace("]","")
-                            .toInt()
-                        genreString += genre.get(genrenum)+" "
+                    println(viewModel.upcomingMovie.value?.joinToString(",") { it.title })
+                    println(" life is soooooo hard")
+
+
+                    viewModel.upcomingMovie.observe(this, Observer {
+                        for (i in 0 until viewModel.upcomingMovie.value!!.size) {
+                            viewModel.upcomingMovie.observe(this, Observer {
+                                val genres = it.get(i).genre_ids
+                                val genres1 = genres.split(",")
+                                var genreString = ""
+                                for (i in 0 until genres1.size) {
+                                    val genrenum = genres1[i].replace("[", "")
+                                        .replace("]", "")
+                                        .toInt()
+                                    genreString += genre.get(genrenum) + " "
+                                }
+                                it.get(i).genre_st = genreString
+                            }
+                            )
+                        }
+                    })
+
+                } else {
+                    TVType.setText("Now Playing")
+
+                    // viewModel.fetchNowPlay()
+                    if (viewModel.nowshowingMovie.value?.size!! < 1) {
+                        viewModel.fetchNowPlay()
                     }
-                    val genre_str = genreString
-                    clay.add(Movie(poster_path,backdrop_path,genres,title,
-                        vote_average,overview,release_date,loved,star,comments,genre_str,id  ))
+                    println(viewModel.nowshowingMovie.value?.joinToString(",") { it.title })
+                    println(" life is soooooo hard")
+
+
+                    viewModel.nowshowingMovie.observe(this, Observer {
+                        for (i in 0 until viewModel.nowshowingMovie.value!!.size) {
+                            viewModel.nowshowingMovie.observe(this, Observer {
+                                val genres = it.get(i).genre_ids
+                                val genres1 = genres.split(",")
+                                var genreString = ""
+                                for (i in 0 until genres1.size) {
+                                    val genrenum = genres1[i].replace("[", "")
+                                        .replace("]", "")
+                                        .toInt()
+                                    genreString += genre.get(genrenum) + " "
+                                }
+                                it.get(i).genre_st = genreString
+                            }
+                            )
+                        }
+                    })
                 }
-                viewModel.nowshowingMovie.value =clay
 
-
+            } catch (e: JSONException) {
+                //exception
+                e.printStackTrace()
             }
 
-        } catch (e: JSONException) {
-            //exception
-            e.printStackTrace()
-        }
         if(name == "upComing") {
             //  call the constructor of MyAdapter to send the reference and data to Adapter
             val customAdapter = MovieAdapter(viewModel.upcomingMovie.value!! ){
