@@ -29,8 +29,9 @@ class MovieViewModel(application: Application) : AndroidViewModel(application){
     var nowshowingMovie = MutableLiveData<ArrayList<Movie>>()
     var savedMovies = MutableLiveData<ArrayList<Movie>>()
     var singleMovie = MutableLiveData<Movie>()
-    val databaseNowplay = MovieDB.getDBObject(getApplication<Application>().applicationContext)
-    val databaseUpcome = MovieDB.getDBObject(getApplication<Application>().applicationContext)
+
+    val databaseSaved = MovieDB.getDBObject(getApplication<Application>().applicationContext)
+
 
 
     init {
@@ -40,13 +41,12 @@ class MovieViewModel(application: Application) : AndroidViewModel(application){
         genre.value=ArrayList()
 
     }
-    fun updateListNowplay() {
-        nowshowingMovie.value?.addAll(
-            databaseNowplay?.movieDAO()?.getMovieList() as ArrayList<Movie>)
-    }
-    fun updateListUpcome() {
-        upcomingMovie.value?.addAll(
-            databaseUpcome?.movieDAO()?.getMovieList() as ArrayList<Movie>)
+
+    fun updateListSaved() {
+
+        savedMovies.value=
+            databaseSaved?.movieDAO()?.getMovieList() as ArrayList<Movie>
+
     }
     interface MovieService {
 
@@ -62,7 +62,20 @@ class MovieViewModel(application: Application) : AndroidViewModel(application){
             @Query("language") language: String
         ): Call<ResponseBody>
     }
-
+    fun addSave(movie: Movie) {
+        //databaseSaved?.movieDAO()?.deleteAll()
+        println("showing saved list lll"+ databaseSaved?.movieDAO()?.getMovieList()?.joinToString(",") { it.title })
+        databaseSaved?.movieDAO()?.insert(movie)
+        println("showing saved list lll2"+ databaseSaved?.movieDAO()?.getMovieList()?.joinToString(",") { it.title })
+        updateListSaved()
+    }
+    fun updateSave(movie: Movie) {
+        println("showing saved list lll"+ databaseSaved?.movieDAO()?.getMovieList()?.joinToString(",") { it.title })
+        databaseSaved?.movieDAO()?.deleteMovie(movie.id.toString())
+        databaseSaved?.movieDAO()?.insert(movie)
+        println("showing saved list lll2"+ databaseSaved?.movieDAO()?.getMovieList()?.joinToString(",") { it.title })
+        updateListSaved()
+    }
     fun fetchNowPlay() {
 
         val retrofit = Retrofit.Builder()
@@ -94,10 +107,15 @@ class MovieViewModel(application: Application) : AndroidViewModel(application){
             if (response.isSuccessful) {
                 response.body()?.let {
                     // println(it.string())// you can only get the string once
-                    if(ti ==1 ){
-                        addMovieListNP(it.string())
-                    }else{
+                    if(ti ==2 ){
+
                         addMovieListUC(it.string())
+                        listener?.updateRecycler()
+
+                    }else{
+                        addMovieListNP(it.string())
+                        listener?.updateRecycler()
+
                     }
                     //addMovieListNP(it.string())
 
@@ -107,12 +125,14 @@ class MovieViewModel(application: Application) : AndroidViewModel(application){
         }
     }
     fun addMovieListNP(json: String) {
-        val movie = Movie()
         val data = JSONObject(json)
         var arrayOfObject = data.getJSONArray("results")
         //var savedMovies = MutableLiveData<ArrayList<Movie>>()
         var movies = ArrayList<Movie>()
+        //databaseNowplay?.movieDAO()?.deleteAll()
         for (i in 0 until arrayOfObject.length()) {
+            val movie = Movie()
+
             // create a JSONObject for fetching single user data
             val userDetail = arrayOfObject.getJSONObject(i)
                 movie.poster_path = userDetail.getString("poster_path")
@@ -129,50 +149,48 @@ class MovieViewModel(application: Application) : AndroidViewModel(application){
                 movie.genre_ids = userDetail.getString("genre_ids")
                 //genre_ids may be a problem in future
                 //need to do this part in future
-                //movies.add(movie)
+                movies.add(movie)
                 println(movie.title)
-                databaseNowplay?.movieDAO()?.insert(movie)
-                updateListNowplay()
-
+                //databaseNowplay?.movieDAO()?.insert(movie)
         }
+        //println("before "+ nowshowingMovie.value?.joinToString(",") { it.title })
+
+        nowshowingMovie.value= movies
 //        databaseNowplay?.movieDAO()?.insert(movies)
-//        updateListNowplay()
+        //updateListNowplay()
+        //println("nowshowing "+ nowshowingMovie.value?.joinToString(",") { it.title })
+        //println(nowshowingMovie.value.)
 
     }
     fun addMovieListUC(json: String) {
-        val movie = Movie()
         val data = JSONObject(json)
         var arrayOfObject = data.getJSONArray("results")
         var movies = ArrayList<Movie>()
+        //databaseUpcome?.movieDAO()?.deleteAll()
 
         for (i in 0 until arrayOfObject.length()) {
-
+            val moviee = Movie()
             // create a JSONObject for fetching single user data
             val userDetail = arrayOfObject.getJSONObject(i)
-            movie.poster_path = userDetail.getString("poster_path")
-            movie.backdrop_path = userDetail.getString("backdrop_path")
-            // fetch email and name and store it in arraylist
-            movie.title = userDetail.getString("title")
-            movie.vote_average = userDetail.getDouble("vote_average")
-            movie.overview = userDetail.getString("overview")
-            movie.release_date = userDetail.getString("release_date")
-            movie.loved = false
-            movie.star = 0.0f
-            movie.comments= ""
-            movie.id = userDetail.getInt("id")
-            movie.genre_ids = userDetail.getString("genre_ids")
-            //genre_ids may be a problem in future
-            //need to do this part in future
+            moviee.poster_path = userDetail.getString("poster_path")
+            moviee.backdrop_path = userDetail.getString("backdrop_path")
+            moviee.title = userDetail.getString("title")
+            moviee.vote_average = userDetail.getDouble("vote_average")
+            moviee.overview = userDetail.getString("overview")
+            moviee.release_date = userDetail.getString("release_date")
+            moviee.loved = false
+            moviee.star = 0.0f
+            moviee.comments= ""
+            moviee.id = userDetail.getInt("id")
+            moviee.genre_ids = userDetail.getString("genre_ids")
 
-            databaseUpcome?.movieDAO()?.insert(movie)
-            updateListUpcome()
-            //movies.add(movie)
-            println("current movie name is: "+ movie.title)
-
+            movies.add(moviee)
+           println("current movie name is: "+ moviee.title)
         }
-        println("movie cap is " + movies.size)
-//        databaseUpcome?.movieDAO()?.insert(movies)
-//        updateListUpcome()
+        //println("before "+ upcomingMovie.value?.joinToString(",") { it.title })
+
+        upcomingMovie.value=movies
+
 
     }
     fun checkSaved():Boolean?{
@@ -200,6 +218,13 @@ class MovieViewModel(application: Application) : AndroidViewModel(application){
         savedMovies.value?.add(movie)
     }
     fun removeMovie(index:Int){
+
+        val idd = savedMovies.value?.get(index)?.id!!
+        databaseSaved?.movieDAO()?.deleteMovie(idd.toString())
         savedMovies.value?.removeAt(index)
+    }
+    var listener: DataChangedListener? = null
+    interface DataChangedListener {
+        fun updateRecycler()
     }
 }

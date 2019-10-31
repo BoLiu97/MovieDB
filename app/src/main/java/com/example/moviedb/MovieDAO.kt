@@ -18,8 +18,8 @@ interface MovieDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(movie: Movie)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(movies: List<Movie>)
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insert(movies: List<Movie>)
 
     @Query("DELETE FROM movieDB WHERE id = :id")
     fun deleteMovie(id: String)
@@ -30,19 +30,7 @@ interface MovieDAO {
     @Query("SELECT * FROM movieDB LIMIT :pageSize OFFSET :pageIndex")
     fun getMoviePage(pageSize: Int, pageIndex: Int): List<Movie>?
 
-//    @Delete
-//    suspend fun deleteMovie(movie: Movie)
-    //    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun update(movie: Movie)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun update(movie: Movie)
 
-    /*
-    @Query("SELECT * FROM playlist " +
-    "WHERE playlist_title LIKE '% :playlistTitle %' " +
-    "GROUP BY playlist_title " +
-    "ORDER BY playlist_title " +
-    "LIMIT :limit")
-    List<IPlaylist> searchPlaylists(String playlistTitle, int limit);
-     */
-//    @Query("SELECT * FROM movieDB WHERE  = 1 LIMIT :pageSize OFFSET ((:pageIndex-1)*:pageSize) ")
-//    suspend fun getFavorite(pageSize: Int, pageIndex: Int): List<Movie>?
 }

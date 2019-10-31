@@ -42,14 +42,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).toolbar.title = "Movie Detail"
-//        toolbar.setNavigationOnClickListener{
-//
-//        }
-//        toolbar.setNavigationOnClickListener { view -> onBackPressed() }
 
-//        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-//            // Handle the back button event
-//        }
         bt_edit.setOnClickListener {
             findNavController().navigate(R.id.action_global_reviewFragment)
         }
@@ -91,32 +84,8 @@ class DetailFragment : Fragment() {
 
             }
 
-            //print(movieViewModel.savedMovies.value?.get(idMovie).star)
-
-            //print("star is " + )
-
-
         }
-//        for (i in 0 until movieViewModel.savedMovies.value!!.size) {
-//            movieViewModel.savedMovies.observe(this, Observer {
-//                idmm = it.get(i).id
-//                if(idMovie == idmm){
-//                    TV_personal.setText(it.get(i).comments)
-//                    rating.setRating(it.get(i).star.toFloat())
-//                    print(it.get(i).star)
-//                    //print("star is " + )
-//                    TV_personal.isVisible =true
-//                    rating.isVisible=true
-//                    bt_edit.isVisible = true
-//                }
-//
-//            })
-//
-//            if(idMovie == idmm){
-//                TV_personal.setText(svComm)
-//                rating.setRating(svRate.toFloat())
-//            }
-//        }
+
 
 
     }

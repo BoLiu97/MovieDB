@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MovieAdapter(
 
-                   val movieData: ArrayList<Movie>,
+                   var movieData: ArrayList<Movie>,
                    val clickListener: (Movie)->Unit ) : RecyclerView.Adapter<MovieAdapter.RecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {

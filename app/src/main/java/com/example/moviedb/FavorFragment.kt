@@ -57,24 +57,12 @@ class FavorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).toolbar.title = ""
 
-//        val recyclerView = view.findViewById(R.id.fave_recycler) as RecyclerView
-//        val linearLayoutManager = LinearLayoutManager(context)
-//        TVType.setText("My Favourite")
-//        recyclerView.layoutManager = linearLayoutManager
-//        val customAdapter = MovieAdapter(viewModel.savedMovies.value!! ){
-//                movie:Movie ->recyclerViewItemSelected(movie)
-//
-//        }
-//        ItemTouchHelper(SwipeHandler()).attachToRecyclerView(
-//            `@+id/fave_recycler`
-//        )
-//
-//        recyclerView.adapter = customAdapter // set the Adapter to RecyclerView
-//
+
 
         TVType.setText("My Favourite Movies")
         viewManager = LinearLayoutManager(context)
-        viewAdapter = RecyclerViewAdapter(viewModel.savedMovies.value!!){
+        viewModel.savedMovies.value?.sortBy { it.star }
+        viewAdapter = RecyclerViewAdapter(viewModel.savedMovies.value?.filter { it.loved == true } as ArrayList<Movie>){
                 movie:Movie ->recyclerViewItemSelected(movie)
         }
         println("size of savedMovie" + viewModel.savedMovies.value!!.size)

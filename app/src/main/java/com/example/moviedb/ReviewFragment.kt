@@ -1,7 +1,9 @@
 package com.example.moviedb
 
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -69,17 +71,7 @@ class ReviewFragment : Fragment() {
             PosterLoader.getInstance().loadURL(it.backdrop_path, IV_post)
         })
 
-//        movieViewModel.singleMovie.observe(this, Observer {
-//            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
-//                movieViewModel.savedMovies.observe(this, Observer {
-//                    idmm = it.get(i).id
-//                    if (orginId == idmm) {
-//                        ET_review.setText(it.get(i).comments)
-//                        ratingBar.setRating(it.get(i).star.toFloat())
-//                    }
-//                })
-//            }
-//        })
+
         if(movieViewModel.checkSaved()!!){
             for (i in 0 until movieViewModel.savedMovies.value!!.size) {
                 movieViewModel.savedMovies.observe(this, Observer {
@@ -93,7 +85,6 @@ class ReviewFragment : Fragment() {
                 })
 
             }
-
             //println(movieViewModel.savedMovies.value?.joinToString(",") {it.title  })
 
         }
@@ -104,60 +95,44 @@ class ReviewFragment : Fragment() {
             movieViewModel.singleMovie.value!!.loved = true
 
 
-//            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
-//                movieViewModel.savedMovies.observe(this, Observer {
-//                    idmm = it.get(i).id
-//
-//                })
-//                if (orginId == idmm) {
-//                    movieViewModel.savedMovies.value!!.get(i).comments = ET_review.text.toString()
-//                    movieViewModel.savedMovies.value!!.get(i).star = ratingBar.rating
-//                    findNavController().navigate(R.id.action_global_detailFragment)
-//                    return@setOnClickListener
-//                }
-//            }
+
             if(movieViewModel.checkSaved()!!){
-                movieViewModel.savedMovies.value!!.get(loc)?.comments =  ET_review.text.toString()
-                movieViewModel.savedMovies.value!!.get(loc)?.star = ratingBar.rating
+                movieViewModel.updateSave(movieViewModel.singleMovie.value!!)
+
                 findNavController().navigate(R.id.action_global_detailFragment)
-                println(movieViewModel.savedMovies.value?.joinToString(",") {it.title  })
             }else {
-                movieViewModel.addMovie(movieViewModel.singleMovie.value!!)
+
+                movieViewModel.addSave(movieViewModel.singleMovie.value!!)
+
+
+
                 findNavController().navigate(R.id.action_global_detailFragment)
             }
         }
         bt_cancel.setOnClickListener {
-            //            var movie11 = Movie(poster_path,backPath,genre_ids,
-//                title,vote_average,overview,release_date,loved,bStar,bReview,genre_st,id)
-//            movieViewModel.savedMovies.value!!.set(orginId,movie11)
-//            var nohad = false
-//            for (i in 0 until movieViewModel.savedMovies.value!!.size) {
-//                movieViewModel.savedMovies.observe(this, Observer {
-//                    idmm = it.get(i).id
-//
-//                })
-//                if (orginId == idmm) {
-//                    nohad = true
-//                }
-//            }
-//            if (nohad) {
-//                movieViewModel.addMovie(movieViewModel.singleMovie.value!!)
-//            }
+
             if(!movieViewModel.checkSaved()!!){
-                //here is the problem
                 movieViewModel.addMovie(movieViewModel.singleMovie.value!!)
             }else{
                 ET_review.setText(movieViewModel.savedMovies.value!!.get(loc)?.comments)
                 ratingBar.setRating(movieViewModel.savedMovies.value!!.get(loc)?.star)
-                //save the orgin values if click cancel
             }
             findNavController().navigate(R.id.action_global_detailFragment)
         }
 
     }
-    override fun onPause() {
-        super.onPause()
-        movieViewModel.singleMovie.value!!.star = ratingBar.rating
-        movieViewModel.singleMovie.value!!.comments = ET_review.text.toString()
+    override fun onResume() {
+        super.onResume()
+        val rr = ratingBar.rating
+        val tt = ET_review.text.toString()
+
+        ET_review.setText(tt)
+        ratingBar.setRating(rr )
+
     }
+
+
+
+
+
 }

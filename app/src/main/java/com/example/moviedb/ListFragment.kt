@@ -20,8 +20,14 @@ import org.json.JSONException
 import org.json.JSONObject
 
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(),MovieViewModel.DataChangedListener {
     lateinit var viewModel: MovieViewModel
+    lateinit var viewAdapter: MovieAdapter
+
+    override fun updateRecycler(){
+        viewAdapter.movieData=viewModel.nowshowingMovie.value!!
+        viewAdapter.notifyDataSetChanged()
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,14 +60,12 @@ class ListFragment : Fragment() {
 
                 if (name == "upComing") {
 
-                    if (viewModel.upcomingMovie.value?.size!! < 1) {
-                        viewModel.fetchUpcome()
+                    viewAdapter = MovieAdapter(viewModel.upcomingMovie.value!! ){
+                            movie:Movie ->recyclerViewItemSelected(movie)
                     }
                     TVType.setText("Upcoming")
-
                     println(viewModel.upcomingMovie.value?.joinToString(",") { it.title })
                     println(" life is soooooo hard")
-
 
                     viewModel.upcomingMovie.observe(this, Observer {
                         for (i in 0 until viewModel.upcomingMovie.value!!.size) {
@@ -80,17 +84,17 @@ class ListFragment : Fragment() {
                             )
                         }
                     })
+                    recyclerView.adapter = viewAdapter
 
                 } else {
                     TVType.setText("Now Playing")
 
-                    // viewModel.fetchNowPlay()
-                    if (viewModel.nowshowingMovie.value?.size!! < 1) {
-                        viewModel.fetchNowPlay()
-                    }
-                    println(viewModel.nowshowingMovie.value?.joinToString(",") { it.title })
-                    println(" life is soooooo hard")
 
+                    viewModel.fetchNowPlay()
+                    viewAdapter = MovieAdapter(viewModel.nowshowingMovie.value!! ){
+                            movie:Movie ->recyclerViewItemSelected(movie)
+
+                    }
 
                     viewModel.nowshowingMovie.observe(this, Observer {
                         for (i in 0 until viewModel.nowshowingMovie.value!!.size) {
@@ -109,6 +113,7 @@ class ListFragment : Fragment() {
                             )
                         }
                     })
+                    recyclerView.adapter = viewAdapter
                 }
 
             } catch (e: JSONException) {
@@ -116,19 +121,8 @@ class ListFragment : Fragment() {
                 e.printStackTrace()
             }
 
-        if(name == "upComing") {
-            //  call the constructor of MyAdapter to send the reference and data to Adapter
-            val customAdapter = MovieAdapter(viewModel.upcomingMovie.value!! ){
-                movie:Movie ->recyclerViewItemSelected(movie)
 
-            }
-            recyclerView.adapter = customAdapter // set the Adapter to RecyclerView
-        }else{
-            val customAdapter = MovieAdapter(viewModel.nowshowingMovie.value!! ){
-                    movie:Movie ->recyclerViewItemSelected(movie)
-            }
-            recyclerView.adapter = customAdapter // set the Adapter to RecyclerView
-        }
+        viewModel.listener = this
 
     }
     fun recyclerViewItemSelected(movie: Movie) {
